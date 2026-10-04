@@ -1,4 +1,4 @@
-Ecommerce Data Analysis with MySQL
+## Ecommerce Data Analysis with MySQL
 ## Project Summary
 
 A completed ecommerce data analytics project using MySQL and MySQL Workbench. The project moves from importing and validating four related CSV files to answering sales, order, product, and customer questions with SQL.
