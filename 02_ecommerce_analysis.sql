@@ -1,6 +1,26 @@
 -- ------------------------------- C. Analysis --------------------------------------------------
--- 1.Analyze order status
--- Count orders by status:
+
+-- 1. Count of orders with no item rows :
+SELECT
+    o.status,
+    COUNT(*) AS orders_without_items
+FROM orders AS o
+LEFT JOIN order_items AS oi
+    ON oi.order_id = o.order_id
+WHERE oi.order_id IS NULL
+GROUP BY o.status
+ORDER BY o.status;
+
+-- The order id list which has no item rows in order_item table.
+SELECT o.order_id, o.status, o.order_date
+FROM orders AS o
+LEFT JOIN order_items AS oi ON oi.order_id = o.order_id
+WHERE oi.order_id IS NULL
+ORDER BY o.order_id;
+
+
+-- 2.Analyze order status
+-- Count orders by status with item rows :
 SELECT
     status,
      COUNT(DISTINCT o.order_id) AS completed_orders_with_items
@@ -10,7 +30,7 @@ ON o.order_id = oi.order_id
 GROUP BY status
 ORDER BY completed_orders_with_items DESC;
 
--- 2. How many orders are in each status? What are the rates?
+-- 3. How many orders are in each status? What are the rates?
 WITH orders_with_items AS (
     SELECT DISTINCT
         o.order_id,
@@ -36,7 +56,7 @@ SELECT
 FROM status_counts
 ORDER BY order_count DESC;
 
--- 3.Total Quantity by order status for available item rows.
+-- 4.Total Quantity by order status for available item rows.
 SELECT
     o.status,
     SUM(oi.quantity) AS total_quantity
@@ -46,7 +66,7 @@ JOIN order_items AS oi
 GROUP BY o.status
 ORDER BY total_quantity DESC;
 
--- 4.Total Quantity and Revenue for Completed orders with available item rows.
+-- 5.Total Quantity and Revenue for Completed orders with available item rows.
 SELECT
     SUM(oi.quantity) AS total_quantity_sold,
     SUM(oi.quantity * oi.price) AS total_revenue,
@@ -56,7 +76,7 @@ JOIN order_items AS oi ON oi.order_id = o.order_id
 WHERE o.status = 'Completed';
 
 -- Analyze monthly sales :
--- 5. Completed revenue and units by month:
+-- 6. Completed revenue and units by month:
 -- (These queries use date functions: YEAR, MONTH, MONTHNAME, and DATE_FORMAT)
 SELECT
     YEAR(o.order_date) AS order_year,
@@ -78,7 +98,7 @@ GROUP BY
 ORDER BY order_year, order_month;
 
 -- Analyze products and categories :
--- 6. Which product categories have the highest Completed revenue?
+-- 7. Which product categories have the highest Completed revenue?
 SELECT
     p.category,
     SUM(oi.quantity * oi.price) AS completed_revenue,
@@ -93,7 +113,7 @@ WHERE o.status = 'Completed'
 GROUP BY p.category
 ORDER BY completed_revenue DESC;
 
--- 7. Top 10 products by revenue.
+-- 8. Top 10 products by revenue.
 -- Which products have the highest Completed revenue? 
 -- (These queries use JOIN, SUM, AVG, COUNT(DISTINCT), GROUP BY, ORDER BY, and LIMIT.)
 SELECT
@@ -113,7 +133,7 @@ GROUP BY p.product_id, p.product_name, p.category
 ORDER BY completed_revenue DESC;
 
 -- Analyze revenue by country :
--- 8. Which countries have the highest Completed revenue?
+-- 9. Which countries have the highest Completed revenue?
 -- NULLIF(x, 0) returns NULL when x is zero, preventing a division-by-zero error.
 SELECT 
     c.country,
@@ -135,7 +155,7 @@ GROUP BY c.country
 ORDER BY completed_revenue DESC;
 
 -- Find repeat customers :
--- 9. Which customers have multiple Completed orders?
+-- 10. Which customers have multiple Completed orders?
 SELECT
     o.customer_id,
     COUNT(DISTINCT o.order_id) AS completed_order_count,
@@ -148,7 +168,7 @@ HAVING COUNT(DISTINCT o.order_id) > 1
 ORDER BY total_revenue DESC;
 
 -- Rank products with CTEs and window functions :
--- 10. Which top 5 products rank highest by revenue?
+-- 11. Which top 5 products rank highest by revenue?
 WITH product_sales AS (
     SELECT
         p.product_id,
@@ -174,3 +194,4 @@ FROM product_sales)
 SELECT * FROM product_ranking
 WHERE revenue_rank <= 5
 ORDER BY revenue_rank, product_id;
+
