@@ -157,7 +157,7 @@ WHERE oi.order_id IS NULL
 GROUP BY o.status
 ORDER BY o.status;
 
--- this are the order id list which has no item rows in order_item table.
+-- The order id list which has no item rows in order_item table.
 SELECT o.order_id, o.status, o.order_date
 FROM orders AS o
 LEFT JOIN order_items AS oi ON oi.order_id = o.order_id
