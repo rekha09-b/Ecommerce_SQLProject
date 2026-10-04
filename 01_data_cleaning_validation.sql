@@ -145,21 +145,3 @@ LEFT JOIN products AS p
     ON p.product_id = oi.product_id
 WHERE o.order_id IS NULL
    OR p.product_id IS NULL;
-
--- Find orders with no item rows
-SELECT
-    o.status,
-    COUNT(*) AS orders_without_items
-FROM orders AS o
-LEFT JOIN order_items AS oi
-    ON oi.order_id = o.order_id
-WHERE oi.order_id IS NULL
-GROUP BY o.status
-ORDER BY o.status;
-
--- The order id list which has no item rows in order_item table.
-SELECT o.order_id, o.status, o.order_date
-FROM orders AS o
-LEFT JOIN order_items AS oi ON oi.order_id = o.order_id
-WHERE oi.order_id IS NULL
-ORDER BY o.order_id;
