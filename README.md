@@ -14,8 +14,6 @@ A completed ecommerce data analytics project using MySQL and MySQL Workbench. Th
 
 **Dataset size:** 300 customers, 50 products, 1,000 orders, and 2,000 order-item rows. Orders are dated in 2024.
 
-Work Completed
-
 ### Data cleaning and validation
 
 - Verified imported row counts against the source files.
