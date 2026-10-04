@@ -36,23 +36,24 @@ Work Completed
 
 ## Business Questions
 
-- How many orders are Completed, Cancelled, and Returned?
-- What are the cancellation and return rates?
 - How many orders have item details, and how many are missing them?
-- What quantity and revenue are represented by available Completed-order item rows?
-- How do order counts, revenue, and quantity vary by month?
-- Which products and categories generate the most revenue and units?
-- Which countries and customers have the most Completed order activity and revenue?
-- Which products rank highest by revenue?
-- Which customers placed multiple Completed orders with item details?
+- How many orders are Completed, Cancelled, and Returned? What are the rates?
+- Total Quantity by order status for available item rows.
+- Total Quantity and Revenue for Completed orders with available item rows.
+- Completed revenue and units by month.
+- Which product categories have the highest Completed revenue?
+- Which products have the highest Completed revenue?
+- Which countries have the highest Completed revenue?
+- Which customers have multiple Completed orders?
+- Which top 5 products rank highest by revenue?
 
-Key Findings
+## Key Findings
 
 - **Orders without item rows:** 139 total: 110 Completed, 20 Cancelled, and 9 Returned.
 - **Status among orders with item details:** 861 distinct orders: 695 Completed (80.72%), 83 Cancelled (9.64%), and 83 Returned (9.64%). The denominator is the 861 orders with item details.
 - **Top products by available Completed-order revenue:** Product_16 (Makeup), Product_45 (Body), Product_25 (Hair), Product_23 (Body), and Product_6 (Body). Product_16 ranked first.
 
-SQL Concepts Used
+## SQL Concepts Used
 
 - **Joins:** `JOIN`, `LEFT JOIN`
 - **Filtering and grouping:** `WHERE`, `GROUP BY`, `HAVING`
