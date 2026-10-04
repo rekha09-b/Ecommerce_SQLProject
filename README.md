@@ -73,6 +73,5 @@ Limitations
 
 - `01_data_cleaning_validation.sql` — data-quality and validation queries.
 - `02_ecommerce_analysis.sql` — SQL queries used to answer the business questions.
-- `data/` — optional source CSV files; include only if redistribution is permitted.
 
 **Tools:** MySQL, MySQL Workbench.
