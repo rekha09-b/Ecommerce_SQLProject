@@ -1,4 +1,4 @@
-# ECOMMERCE_SQL_PROJECT
+
 
 # # Ecommerce Data Analysis with MySQL
 ## Project Summary
