@@ -113,8 +113,7 @@ WHERE o.status = 'Completed'
 GROUP BY p.category
 ORDER BY completed_revenue DESC;
 
--- 8. Top 10 products by revenue.
--- Which products have the highest Completed revenue? 
+-- 8. Which products have the highest Completed revenue? 
 -- (These queries use JOIN, SUM, AVG, COUNT(DISTINCT), GROUP BY, ORDER BY, and LIMIT.)
 SELECT
     p.product_id,
