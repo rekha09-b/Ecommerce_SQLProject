@@ -60,7 +60,7 @@ A completed ecommerce data analytics project using MySQL and MySQL Workbench. Th
 - **Date analysis:** `YEAR`, `MONTH`, `MONTHNAME`, `DATE_FORMAT`
 - **Null and safe-division handling:** `COALESCE`, `NULLIF`
 - **Advanced querying:** Common table expressions (CTEs), `RANK()` window function
-- **Result ordering:** `ORDER BY`, `LIMIT
+- **Result ordering:** `ORDER BY`, `LIMIT`
 
 Limitations
 
