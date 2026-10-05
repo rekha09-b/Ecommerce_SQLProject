@@ -62,7 +62,7 @@ A completed ecommerce data analytics project using MySQL and MySQL Workbench. Th
 - **Advanced querying:** Common table expressions (CTEs), `RANK()` window function
 - **Result ordering:** `ORDER BY`, `LIMIT`
 
-Limitations
+## Limitations
 
 - 110 Completed orders have no item rows, so item-based revenue and quantity may be incomplete.
 - Returned item values are not confirmed refund amounts.
